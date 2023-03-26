@@ -25,7 +25,8 @@ class HouseKeeping(models.Model):
     status = models.CharField(choices=[('clean', 'Clean'), ('dirty', 'Dirty')], max_length=10, default='dirty')
     inventory = models.CharField(choices=[('available', 'Available'), ('not available', 'Not Available')], max_length=20, default='not available')
     def __str__(self):
-        return "Room No. "+self.room_no
+        call= "Room No: " + str(self.room_no)
+        return call
 
 class Analytics(models.Model):
     choices=[('january', 'January'), ('february', 'February'), ('march', 'March'), ('april', 'April'), ('may', 'May'), ('june', 'June'), ('july', 'July'), ('august', 'August'), ('september', 'September'), ('october', 'October'), ('november', 'November'), ('december', 'December')]
