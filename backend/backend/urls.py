@@ -22,6 +22,8 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 
 )
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -32,3 +34,4 @@ urlpatterns = [
     path("api/housekeeping/", HouseKeepingView.as_view(), name="housekeeping"),
     path("api/analytics/", AnalyticsView.as_view(), name="analytics"),
 ]
+urlpatterns+=staticfiles_urlpatterns()
