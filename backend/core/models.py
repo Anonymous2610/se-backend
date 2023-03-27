@@ -16,7 +16,7 @@ class Customer(models.Model):
     address = models.CharField(max_length=100)
     room_no = models.ForeignKey(RoomNo, on_delete=models.CASCADE)
     check_in = models.DateField()
-    check_out = models.DateField(blank=true)
+    check_out = models.DateField(blank=True)
     def __str__(self):
         return self.first_name
 
