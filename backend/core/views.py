@@ -40,3 +40,25 @@ class AnalyticsView(generics.ListCreateAPIView):
     queryset = Analytics.objects.all()
     serializer_class = AnalyticsSerializer
     permission_classes = (IsAuthenticated, IsAdminUser)
+
+    
+class HomeView(APIView):
+    def get(self, request):
+        user = request.user
+        context = {}
+        if user.is_authenticated:
+            if (user.is_superuser):
+                Customer_list = Customer.objects.all()
+                analytics = Analytics.objects.all()
+                context['Customer_list'] = CustomerSerializer(Customer_list, many=True).data
+                context['analytics'] = AnalyticsSerializer(analytics, many=True).data
+                return Response(context, status=HTTP_200_OK)
+            elif(user.is_staff):
+                room_list = RoomNo.objects.all()
+                
+                context['room_list'] = RoomNoSerializer(room_list, many=True).data
+                housekeeping_list = HouseKeeping.objects.all()
+                context['housekeeping_list'] = HouseKeepingSerializer(housekeeping_list, many=True).data
+                return Response(context, status=HTTP_200_OK)
+                return Response({"message": "Hello, User!"}, status=HTTP_200_OK)
+        return Response({"message": "Log in First!!"}, status=HTTP_400_BAD_REQUEST)
