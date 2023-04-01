@@ -24,22 +24,22 @@ class LogInView(APIView):
 class RoomNoView(generics.ListCreateAPIView):
     queryset = RoomNo.objects.all()
     serializer_class = RoomNoSerializer
-    permission_classes = (IsAuthenticated, IsAdminUser)
+   # permission_classes = (IsAuthenticated, IsAdminUser)
 
 class CustomerView(generics.ListCreateAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_classes = (IsAuthenticated, IsAdminUser)
+   # permission_classes = (IsAuthenticated, IsAdminUser)
 
 class HouseKeepingView(generics.ListCreateAPIView):
     queryset = HouseKeeping.objects.all()
     serializer_class = HouseKeepingSerializer
-    permission_classes = (IsAuthenticated, IsAdminUser)
+   # permission_classes = (IsAuthenticated, IsAdminUser)
 
 class AnalyticsView(generics.ListCreateAPIView):
     queryset = Analytics.objects.all()
     serializer_class = AnalyticsSerializer
-    permission_classes = (IsAuthenticated, IsAdminUser)
+    #permission_classes = (IsAuthenticated, IsAdminUser)
 
     
 class HomeView(APIView):
